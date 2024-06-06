@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>Login ID</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user=> { %>
+                <tr>
+                    <td>
+                        <%= user.fname %>
+                    </td>
+                    <td>
+                        <%= user.lname %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.mobile %>
+                    </td>
+                    <td>
+                        <%= user.Address %>
+                    </td>
+                    <td>
+                        <%= user.loginId %>
+                    </td>
+                    <td>
+                        <%= user.createdAt %>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>

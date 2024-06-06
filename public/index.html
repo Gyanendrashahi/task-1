@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script type="text/javascript">
+        function validateForm() {
+            var name = document.getElementById("firstName");
+
+            // Regular expression to check for numbers or special characters
+            var pattern = /^[a-zA-Z\s]*$/;
+
+            if (!pattern.test(name.value.trim())) {
+                alert("First Name should only contain letters and spaces.");
+                return false;
+            }
+
+            var name = document.getElementById("firstName");
+            var pass = document.getElementById("password");
+            var number = document.getElementById("mobileNumber");
+            var numbervalue = number.value.trim();
+            var email = document.getElementById("emailId");
+            var emailvalue = email.value.trim();
+            var passvalue = pass.value.trim();
+            var namevalue = name.value.trim();
+            var lowercase = /[a-z]/g;
+            var uppercase = /[A-Z]/g;
+            var specialChars = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\\/]/g;
+
+            if (numbervalue.length != 10) {
+                alert("Number should be 10 digits");
+                return false;
+            } else if (passvalue.match(lowercase) && passvalue.match(uppercase) && passvalue.match(specialChars) && passvalue.length > 6) {
+                return true;
+            } else {
+                alert(" Must be 6 characters long, 1 Uppercase, 1 lowercase, 1 SpecialChars.")
+                return false;
+            }
+        }
+
+        function fetchUserDetails() {
+            window.location.href = "/userDetails";
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="return validateForm()" action="/createuser" name="myForm" method="POST">
+            <div class="mb-3">
+                <label>First Name</label>
+                <input type="text" id="firstName" name="fname" required><br>
+            </div>
+            <div class="mb-3">
+                <label>Last Name</label>
+                <input type="text" id="lastName" name="lname"><br>
+            </div>
+            <div class="mb-3">
+                <label>Mobile Number</label>
+                <input type="text" id="mobileNumber" name="mob" required><br>
+            </div>
+            <div class="mb-3">
+                <label>Email Id</label>
+                <input type="email" id="emailId" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label>Address</label><br>
+                <label>Street</label>
+                <input type="text" id="street" name="str">
+            </div>
+            <div class="mb-3">
+                <label>City</label>
+                <input type="text" id="city" name="city">
+            </div>
+            <div class="mb-3">
+                <label>State</label>
+                <input type="text" id="state" name="stat">
+            </div>
+            <div class="mb-3">
+                <label>Country</label>
+                <input type="text" id="country" name="count">
+                <br>
+            </div>
+            <div class="mb-3">
+                <label>Login Id</label>
+                <input type="text" id="loginId" name="login">
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="text" id="password" name="pass" class="formerror">
+                <div class="col-auto">
+                    <span id="passwordHelpInline" class="form-text">
+                        Must be 6 characters long, 1 Uppercase, 1 lowercase, 1 SpecialChars.
+                    </span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <button class="btn btn-info" onclick="fetchUserDetails()">Get User Details</button>
+        <div id="userDetails" class="mt-3"></div>
+    </div>
+</body>
+
+</html>
